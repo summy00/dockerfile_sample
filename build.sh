@@ -1,0 +1,1 @@
+docker build -f dockerfile -t my_docker_image:1.0.0 .

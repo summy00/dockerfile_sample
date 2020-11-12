@@ -1,0 +1,5 @@
+docker build -f dockerfile.node -t my_node_sample:1.0.0 .
+docker run -itd -p 3000:3000 --name node_c my_node_sample:1.0.0
+http://localhost:3000/
+docker exec -it node_c bash
+ping 192.168.4.12
