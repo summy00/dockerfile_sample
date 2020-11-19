@@ -1,0 +1,2 @@
+redis-cli - enter db
+LRANGE votes 0 100
