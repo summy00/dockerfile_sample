@@ -1,0 +1,1 @@
+docker run -idt --name multi_stage_c multi_stage_build:alpine tail -f /dev/null
