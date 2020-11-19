@@ -1,2 +1,8 @@
-redis-cli - enter db
+echo $MY_ENV
+redis-cli
 LRANGE votes 0 100
+
+screen ~/Library/Containers/com.docker.docker/Data/vms/0/tty
+enter
+ls /var/lib/docker/volumes
+ctrl+a, k - quit

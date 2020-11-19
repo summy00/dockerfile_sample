@@ -3,7 +3,6 @@ version: "3"
 services:
   vote:
     build: ./vote
-    command: python app.py
     volumes:
      - ./vote:/app
     ports:
@@ -11,18 +10,23 @@ services:
     networks:
       - front-tier
       - back-tier
+    depends_on:
+      - "redis"
+    command: python app.py
 
   redis:
     build:
       context: ./redis
     image: redis_voke:alpine
-    container_name: redis
+    container_name: redis_vote
     ports: ["6379"]
     networks:
       - back-tier
+    environment:
+      MY_ENV: 123
 
 # volumes:
-#   db-data:
+#   vote:
 
 networks:
   front-tier:
