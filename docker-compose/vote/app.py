@@ -18,7 +18,9 @@ def get_redis():
 
 @app.route("/", methods=['POST','GET'])
 def hello():
+    # get 'voter_id' from cookies
     voter_id = request.cookies.get('voter_id')
+    # not exist create one
     if not voter_id:
         voter_id = hex(random.getrandbits(64))[2:-1]
 
@@ -29,7 +31,7 @@ def hello():
         vote = request.form['vote']
         data = json.dumps({'voter_id': voter_id, 'vote': vote})
         redis.rpush('votes', data)
-
+    # render index, push to front end
     resp = make_response(render_template(
         'index.html',
         option_a=option_a,
