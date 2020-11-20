@@ -1,0 +1,30 @@
+version: "3.5"
+
+services:
+  redis:
+    build:
+      context: ./
+      dockerfile: ./dockerfile
+    image: vol_redis_i:1.1.0
+    container_name: vol_redis_c
+    ports: ["6379"]
+
+    volumes:
+    # bind
+    # Specify an absolute path mapping(mount)
+    - /Users/fengkewei/Documents/dockerfile_sample/docker-volume/bind/:/usr/local/my_bind_abs_mount
+
+    # Path on the host, relative to the Compose file(mount)
+    - ./bind/:/usr/local/my_bind_relative_mount
+    
+    # volume
+    # Just specify a path and let the Engine create a volume
+    - /usr/local/vol_created_by_docker_compose
+    # Named volume
+    - named_vol/:/usr/local/named_vol
+
+volumes:
+  named_vol:
+
+      
+

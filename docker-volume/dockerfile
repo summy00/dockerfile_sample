@@ -1,0 +1,5 @@
+FROM redis:alpine
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+RUN apk add --no-cache bash 
+RUN mkdir /usr/local/dockerfile_created_vol && echo "Some line" > /usr/local/dockerfile_created_vol/file1.txt
+VOLUME [ "/usr/local/dockerfile_created_vol" ]
